@@ -28,20 +28,10 @@
         </button>
 
         <!-- Desktop links -->
-        <ul id="nav-links" class="hidden md:flex space-x-2 text-gray-700 font-medium">
-          <li><a href="#" data-link="home" class="nav-link hover:text-blue-500">1</a></li>
-          <li><a href="#" data-link="about" class="nav-link hover:text-blue-500">2</a></li>
-          <li><a href="#" data-link="services" class="nav-link hover:text-blue-500">3</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">4</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">5</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">6</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">7</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">8</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">9</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">10</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">11</a></li>
-          <li><a href="#" data-link="contact" class="nav-link hover:text-blue-500">12</a></li>
-
+        <ul id="nav-links" class="hidden md:flex space-x-4 text-gray-700">
+          <li><a href="#" data-link="home" class="nav-link hover:text-slate-100">About Tailwind & NPM</a></li>
+          <li><a href="#" data-link="about" class="nav-link hover:text-slate-100">About Images in Tailwind</a></li>
+          <li><a href="#" data-link="services" class="nav-link hover:text-slate-100">About Tailwind & Javascript</a></li>
         </ul>
 
       </div>
@@ -49,10 +39,10 @@
       <!-- Mobile dropdown -->
       <ul id="nav-mobile"
           class="hidden md:hidden flex flex-col space-y-2 pb-4 text-gray-700 font-medium overflow-hidden max-h-0 transition-all duration-300">
-        <li><a href="#" data-link="home" class="nav-link block py-2 hover:text-blue-500">Home</a></li>
-        <li><a href="#" data-link="about" class="nav-link block py-2 hover:text-blue-500">About</a></li>
-        <li><a href="#" data-link="services" class="nav-link block py-2 hover:text-blue-500">Services</a></li>
-        <li><a href="#" data-link="contact" class="nav-link block py-2 hover:text-blue-500">Contact</a></li>
+        <li><a href="#" data-link="home" class="nav-link block py-2 hover:text-slate-100">Home</a></li>
+        <li><a href="#" data-link="about" class="nav-link block py-2 hover:text-slate-100">About</a></li>
+        <li><a href="#" data-link="services" class="nav-link block py-2 hover:text-slate-100">Services</a></li>
+        <li><a href="#" data-link="contact" class="nav-link block py-2 hover:text-slate-100">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -62,12 +52,6 @@
 
   <!-- Page content -->
   <div class="max-w-xl mx-auto">
-    <h1 class="text-xl font-bold text-blue-600 mb-4">
-      bphtml10twnd - Tailwind example on images and netlify publication
-    </h1>
-    <p class="text-gray-700">
-      This project is fully set up and ready for use.
-    </p>
 
     <!-- ACCORDIONS -->
     <div class="space-y-4">
@@ -88,9 +72,9 @@
             <code>npm run build</code> – runs the build script to compile Tailwind CSS, process assets, and output a production-ready site (usually in dist/ or public/).
             </p>
             <p class="font-bold">Netlify Deployment</p>
-            <p>Connect your GitHub repo; Netlify automatically runs npm install and npm run build on the server.
-            Set Build command to npm run build and Publish directory to your build folder (e.g., dist/).
-            </p>
+            <p>Connect your GitHub repo; Netlify automatically runs npm install and npm run build on the server.</p>
+            <p>Set Build command to npm run build and Publish directory to your build folder (e.g., dist/).</p>
+            
           </div>
         </div>
       </div>
@@ -156,75 +140,74 @@
 
   <!-- SCRIPT for accordion toggle -->
   <script>
-    document.querySelectorAll('.accordion-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const content = button.nextElementSibling;
+      document.querySelectorAll('.accordion-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
 
-        content.classList.toggle('hidden');
+          content.classList.toggle('hidden');
 
-        // Update + / -
-        const icon = button.querySelector('span');
-        icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+          // Update + / -
+          const icon = button.querySelector('span');
+          icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+        });
+      });
+
+    const navToggle = document.getElementById("nav-toggle");
+    const navMobile = document.getElementById("nav-mobile");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const navbar = document.getElementById("navbar");
+
+    /* -------------------------
+      1) SLIDE-DOWN MOBILE MENU
+      ------------------------- */
+    navToggle.addEventListener("click", () => {
+      if (navMobile.classList.contains("hidden")) {
+        navMobile.classList.remove("hidden");
+        navMobile.style.maxHeight = navMobile.scrollHeight + "px";
+      } else {
+        navMobile.style.maxHeight = "0px";
+        setTimeout(() => navMobile.classList.add("hidden"), 300);
+      }
+    });
+
+    /* -------------------------
+      2) ACTIVE LINK HIGHLIGHTING
+      ------------------------- */
+    function setActiveLink(name) {
+      navLinks.forEach(link => {
+        if (link.dataset.link === name) {
+          link.classList.add("text-blue-600", "font-semibold");
+        } else {
+          link.classList.remove("text-blue-600", "font-semibold");
+        }
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        const page = link.dataset.link;
+        setActiveLink(page);
       });
     });
 
-  const navToggle = document.getElementById("nav-toggle");
-  const navMobile = document.getElementById("nav-mobile");
-  const navLinks = document.querySelectorAll(".nav-link");
-  const navbar = document.getElementById("navbar");
+    /* -------------------------
+      3) AUTO-HIDE ON SCROLL
+      ------------------------- */
+    let lastScrollTop = 0;
 
-  /* -------------------------
-     1) SLIDE-DOWN MOBILE MENU
-     ------------------------- */
-  navToggle.addEventListener("click", () => {
-    if (navMobile.classList.contains("hidden")) {
-      navMobile.classList.remove("hidden");
-      navMobile.style.maxHeight = navMobile.scrollHeight + "px";
-    } else {
-      navMobile.style.maxHeight = "0px";
-      setTimeout(() => navMobile.classList.add("hidden"), 300);
-    }
-  });
+    window.addEventListener("scroll", () => {
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
 
-  /* -------------------------
-     2) ACTIVE LINK HIGHLIGHTING
-     ------------------------- */
-  function setActiveLink(name) {
-    navLinks.forEach(link => {
-      if (link.dataset.link === name) {
-        link.classList.add("text-blue-600", "font-semibold");
+      if (scrollPos > lastScrollTop && scrollPos > 50) {
+        // scrolling down
+        navbar.style.transform = "translateY(-100%)";
       } else {
-        link.classList.remove("text-blue-600", "font-semibold");
+        // scrolling up
+        navbar.style.transform = "translateY(0)";
       }
+
+      lastScrollTop = scrollPos <= 0 ? 0 : scrollPos;
     });
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      const page = link.dataset.link;
-      setActiveLink(page);
-    });
-  });
-
-  /* -------------------------
-     3) AUTO-HIDE ON SCROLL
-     ------------------------- */
-  let lastScrollTop = 0;
-
-  window.addEventListener("scroll", () => {
-    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollPos > lastScrollTop && scrollPos > 50) {
-      // scrolling down
-      navbar.style.transform = "translateY(-100%)";
-    } else {
-      // scrolling up
-      navbar.style.transform = "translateY(0)";
-    }
-
-    lastScrollTop = scrollPos <= 0 ? 0 : scrollPos;
-  });
-</script>
-
+  </script>
 </body>
 </html>
