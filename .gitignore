@@ -3,7 +3,7 @@
 
 # Dependencies
 node_modules/
-venv/
+env/
 
 # Build output
 dist/
