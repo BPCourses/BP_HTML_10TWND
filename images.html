@@ -21,7 +21,7 @@
             <!-- Logo -->
             <div class="text-xl font-bold text-wlate-600">
             <a href="index.html" data-link="home" >
-                BPHTML10TWNDJS
+                <h1>BPHTML10TWNDJS</h1>
             </a>
             </div>
 
@@ -49,9 +49,9 @@
         </div>
     </nav>
     
-    <!-- Section 1 -->
-    <section class="prose prose-neutral max-w-none mt-12 mb-6">
-      <h1>How to Use Images in This Setup (Local + Netlify)</h1>
+    <div class="max-w-4xl mx-auto px-4">
+      <section class="prose prose-neutral max-w-none mt-12 mb-6">
+      <h1 class="font-bold mb-12">How to Use Images in This Setup (Local + Netlify)</h1>
 
       <p class="mt-6 font-bold">
         Using images in a Tailwind + HTML project works much like any static site,
@@ -110,7 +110,7 @@
       </p>
 
       <pre><code>&lt;img src="/images/photo.jpg" alt="Photo"&gt;</code></pre>
-      
+
       <p>
         Use standard relative paths if your images sit next to the HTML files:
       </p>
@@ -131,71 +131,21 @@
 
         <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
 
-        <p>
+        <p class="mt-6">
           <strong>Note:</strong> Tailwind may purge unused classes. If a background
           class is dynamically generated, safelist it in
           <code>tailwind.config.js</code>.
         </p>
 
-        <p>
+        <p class="font-bold mt-6">
           Following these approaches ensures images work both locally and on Netlify.
           Using the <code>public/</code> folder is the most reliable option, and
           referencing images from the root (<code>/</code>) prevents broken paths in
           production.
         </p>
-    </section>
-
-    <!-- Section 2 -->
-    <section class="prose prose-neutral max-w-none mt-12 mb-6">
-      <h1>Organizing Images for Tailwind + Netlify</h1>
-
-      <p>
-        Tailwind projects typically use a build process (Vite, Webpack, PostCSS).
-        During build:
-      </p>
-
-      <ul>
-        <li>Your CSS is compiled</li>
-        <li>Unused classes are purged</li>
-        <li>Only specific folders are copied to the output</li>
-      </ul>
-
-      <p>
-        If images are placed incorrectly, they may not be included in the build,
-        causing broken links on Netlify.
-      </p>
-
-      <h2>1. Use a <code>public/</code> Folder for Static Assets</h2>
-
-      <p>
-        The safest solution is to put all images inside a <code>public/</code>
-        folder:
-      </p>
-
-      <pre><code>project/
-      public/
-        images/
-          logo.png
-          hero.jpg
-      src/
-        index.css
-        main.js
-      index.html</code></pre>
-
-      <ul>
-        <li>Everything inside <code>public/</code> is copied directly to the final build.</li>
-        <li>No imports are required — just reference assets with absolute paths:</li>
-      </ul>
-
-      <pre><code>&lt;img src="/images/logo.png" alt="Logo"&gt;</code></pre>
-      <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
-
-      <p>
-        This avoids Tailwind purging issues and ensures Netlify always serves your
-        images correctly.
-      </p>
-    </section>
-
+      </section>
+    </div>
+    
     <!-- SCRIPT for accordion toggle -->
     <script>
         document.querySelectorAll('.accordion-btn').forEach(button => {

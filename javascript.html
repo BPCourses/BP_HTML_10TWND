@@ -21,7 +21,7 @@
             <!-- Logo -->
             <div class="text-xl font-bold text-wlate-600">
             <a href="index.html" data-link="home" >
-                BPHTML10TWNDJS
+                <h1>BPHTML10TWNDJS</h1>
             </a>
             </div>
 
@@ -49,110 +49,242 @@
         </div>
     </nav>
     
-    <!-- Section 1 -->
-    <section class="prose prose-neutral max-w-none">
-      <h1>JavaScript & Tailwind</h1>
+    <div class="max-w-6xl mx-auto px-4">
+      <section class="prose prose-neutral max-w-none mt-12">
+        <h1 class="font-bold mb-12">JavaScript & Tailwind</h1>
 
-      <h2>1. Accordion Toggle</h2>
+        <!-- Section 1 -->
+        <section class="prose prose-neutral max-w-none mb-12">
 
-      <p>
-        The accordion JavaScript selects all elements with the
-        <code>.accordion-btn</code> class and attaches a click event listener. When
-        a button is clicked, the script toggles the <code>hidden</code> class on the
-        corresponding <code>.accordion-content</code> element, revealing or hiding
-        it. It also updates the icon inside the button—switching <strong>+</strong>
-        when hidden and <strong>-</strong> when visible.
-      </p>
+          <h1>1. Accordion Toggle</h1>
 
-      <p>Relevant Tailwind classes include:</p>
+          <p>
+            The accordion JavaScript selects all elements with the
+            <code>.accordion-btn</code> class and attaches a click event listener. When
+            a button is clicked, the script toggles the <code>hidden</code> class on the
+            corresponding <code>.accordion-content</code> element, revealing or hiding
+            it. It also updates the icon inside the button—switching <strong>+</strong>
+            when hidden and <strong>-</strong> when visible.
+          </p>
 
-      <ul>
-        <li><code>hidden</code> — hides accordion content by default</li>
-        <li><code>bg-white</code>, <code>bg-gray-50</code></li>
-        <li><code>border</code>, <code>rounded</code></li>
-        <li><code>p-4</code></li>
-        <li><code>font-semibold</code>, <code>text-gray-700</code></li>
-      </ul>
+          <p class="font-bold mt-3">Relevant script/code include:</p>
+          <pre>
+            <code>
+  document.querySelectorAll('.accordion-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;    
+      content.classList.toggle('hidden');
+      const icon = button.querySelector('span');
+      icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+    });
+  });
+  const navToggle = document.getElementById("nav-toggle");
+  const navMobile = document.getElementById("nav-mobile");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navbar = document.getElementById("navbar");
+            </code>
+          </pre>
 
-      <p>
-        These classes style the accordion container, layout, spacing, and
-        typography, while JavaScript controls the interactive opening and closing
-        behavior.
-      </p>
+  <p class="font-sans font-medium text-gray-800 text-base md:text-lg leading-relaxed p-4 mb-12 bg-gray-50 rounded-lg shadow-md">
+    This code makes parts of a webpage interactive. First, it targets all elements with the class <span class="font-mono text-blue-600">.accordion-btn</span>—buttons meant to open or close sections. For each button, it adds a click event listener. When clicked, it finds the next element in the HTML (usually the content panel) and toggles a CSS class <span class="font-mono text-blue-600">hidden</span>, which shows or hides that content. It also updates a <span class="font-mono text-blue-600">&lt;span&gt;</span> inside the button to display <span class="font-mono text-green-600">+</span> when the content is hidden and <span class="font-mono text-green-600">-</span> when visible, giving users a clear visual cue. The second part selects navigation elements: <span class="font-mono text-blue-600">navToggle</span> is likely a button for opening a mobile menu, <span class="font-mono text-blue-600">navMobile</span> is the mobile menu itself, <span class="font-mono text-blue-600">navLinks</span> are individual menu links, and <span class="font-mono text-blue-600">navbar</span> is the main navigation bar. While these selections don’t act yet, they prepare the elements for future interactions. Overall, the code combines element selection and event handling to make accordions and navigation interactive.
+  </p>
 
-      <h2>2. Mobile Navigation Menu</h2>
 
-      <p>
-        The mobile menu toggle uses JavaScript to control both
-        <code>#nav-toggle</code> (the button) and <code>#nav-mobile</code> (the
-        menu). When the button is clicked, JavaScript toggles the
-        <code>hidden</code> class and adjusts <code>maxHeight</code> to create a
-        smooth sliding animation.
-      </p>
+          <p class="font-bold mt-3">Let's look at this script/code in detail:</p>
+          <pre>
+            <code>
+  const navToggle = document.getElementById("nav-toggle");
+  const navMobile = document.getElementById("nav-mobile");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navbar = document.getElementById("navbar");
+            </code>
+          </pre>
+          <p>
+            These four lines of JavaScript retrieve and store references to specific elements in the webpage so they can be controlled later with interactive behavior. The first line selects the button that opens or closes the mobile navigation menu by targeting the element with the ID nav-toggle. The second line grabs the mobile navigation container itself—the element with the ID nav-mobile—so its visibility can be toggled when the user clicks the button. The third line collects all navigation link elements that use the class nav-link; this allows the script to loop through them, highlight the active link, or close the menu when a link is clicked. The final line selects the main navigation bar with the ID navbar, enabling additional features such as auto-hide on scroll or applying style changes. Together, these lines prepare the essential elements the script will manipulate to provide interactive navigation on the site.
+          </p>
 
-      <p>Important Tailwind classes used:</p>
+          <pre>
+            <code>
+  document.querySelectorAll('.accordion-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;    
+      content.classList.toggle('hidden');
+      const icon = button.querySelector('span');
+      icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+    });
+  });
+            </code>
+          </pre>
 
-      <ul>
-        <li><code>hidden</code> — hides menu by default</li>
-        <li><code>md:hidden</code> — shows mobile menu only on small screens</li>
-        <li><code>flex</code>, <code>flex-col</code>, <code>space-y-2</code></li>
-        <li><code>pb-4</code></li>
-        <li><code>text-gray-700</code></li>
-      </ul>
+          <p>
+            This code selects all elements with the class .accordion-btn and loops through each one. For every button, it adds a click event listener. When the button is clicked, the script finds the next sibling element—usually the accordion’s content panel—and toggles the class hidden on it, which shows or hides the content depending on your CSS. It then looks inside the clicked button for a <span> element (used as the icon). If the content is now hidden, the span’s text is set to "+"; if the content is visible, the span’s text changes to "-". In short, the code controls the opening and closing of accordion sections and updates the icon to reflect the current state.
+          </p>
 
-      <p>
-        This setup ensures a responsive, mobile-friendly menu that appears only
-        where needed and does not interfere with the desktop layout.
-      </p>
 
-      <h2>3. Active Link Highlighting</h2>
 
-      <p>
-        JavaScript dynamically adds or removes Tailwind classes to show which
-        navigation link is currently active. Each
-        <code>.nav-link</code> element includes a <code>data-link</code> attribute.
-        When one is clicked, the script adds <code>text-blue-600</code> and
-        <code>font-semibold</code> to highlight the active link and removes these
-        classes from the others.
-      </p>
+          <p class="font-bold mt-3">Relevant Tailwind classes include:</p>
 
-      <p>This uses Tailwind utilities for:</p>
+            <ul>
+              <li><code>hidden</code> — hides accordion content by default</li>
+              <li><code>bg-white</code>, <code>bg-gray-50</code></li>
+              <li><code>border</code>, <code>rounded</code></li>
+              <li><code>p-4</code></li>
+              <li><code>font-semibold</code>, <code>text-gray-700</code></li>
+            </ul>
 
-      <ul>
-        <li>Color — <code>text-blue-600</code></li>
-        <li>Font weight — <code>font-semibold</code></li>
-      </ul>
+            <p>
+              These classes style the accordion container, layout, spacing, and
+              typography, while JavaScript controls the interactive opening and closing
+              behavior.
+            </p>
 
-      <p>
-        This gives users clear visual feedback on their position within the
-        navigation.
-      </p>
 
-      <h2>4. Navbar Auto-Hide on Scroll</h2>
 
-      <p>
-        The navbar automatically hides when the user scrolls down and reappears when
-        scrolling up. JavaScript checks <code>window.pageYOffset</code> to detect
-        scroll direction and applies <code>transform: translateY(-100%)</code> to
-        hide the navbar or <code>translateY(0)</code> to show it again.
-      </p>
 
-      <p>Tailwind classes used on the navbar:</p>
 
-      <ul>
-        <li><code>fixed</code>, <code>top-0</code>, <code>left-0</code></li>
-        <li><code>w-full</code></li>
-        <li><code>shadow</code></li>
-        <li><code>bg-white</code></li>
-        <li><code>transition-all</code>, <code>duration-300</code></li>
-      </ul>
+        </section>  
 
-      <p>
-        These utilities control its position, background, shadow, and animations,
-        creating a smooth sliding, user-friendly navbar.
-      </p>
-    </section>
+        <!-- Section 2 -->
+        <section class="prose prose-neutral max-w-none mb-12">
 
+          <h1>2. Mobile Navigation Menu</h1>
+
+          <p>
+            The mobile menu toggle uses JavaScript to control both
+            <code>#nav-toggle</code> (the button) and <code>#nav-mobile</code> (the
+            menu). When the button is clicked, JavaScript toggles the
+            <code>hidden</code> class and adjusts <code>maxHeight</code> to create a
+            smooth sliding animation.
+          </p>
+
+          <p class="font-bold mt-3">Relevant script/code include:</p>
+          <pre>
+            <code>
+  navToggle.addEventListener("click", () => {
+    if (navMobile.classList.contains("hidden")) {
+      navMobile.classList.remove("hidden");
+      navMobile.style.maxHeight = navMobile.scrollHeight + "px";
+    } else {
+      navMobile.style.maxHeight = "0px";
+      setTimeout(() => navMobile.classList.add("hidden"), 300);
+    }
+  });
+            </code>
+          </pre>
+
+          <p class="font-bold mt-3">Important Tailwind classes used:</p>
+
+          <ul>
+            <li><code>hidden</code> — hides menu by default</li>
+            <li><code>md:hidden</code> — shows mobile menu only on small screens</li>
+            <li><code>flex</code>, <code>flex-col</code>, <code>space-y-2</code></li>
+            <li><code>pb-4</code></li>
+            <li><code>text-gray-700</code></li>
+          </ul>
+
+          <p>
+            This setup ensures a responsive, mobile-friendly menu that appears only
+            where needed and does not interfere with the desktop layout.
+          </p>
+        </section>  
+
+        <!-- Section 3 -->
+        <section class="prose prose-neutral max-w-none mb-12">
+          <h1>3. Active Link Highlighting</h1>
+
+          <p>
+            JavaScript dynamically adds or removes Tailwind classes to show which
+            navigation link is currently active. Each
+            <code>.nav-link</code> element includes a <code>data-link</code> attribute.
+            When one is clicked, the script adds <code>text-blue-600</code> and
+            <code>font-semibold</code> to highlight the active link and removes these
+            classes from the others.
+          </p>
+
+          <p class="font-bold mt-3">Relevant script/code include:</p>
+          <pre>
+            <code>
+  function setActiveLink(name) {
+    navLinks.forEach(link => {
+      if (link.dataset.link === name) {
+        link.classList.add("text-blue-600", "font-semibold");
+      } else {
+        link.classList.remove("text-blue-600", "font-semibold");
+      }
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const page = link.dataset.link;
+      setActiveLink(page);
+    });
+  });
+            </code>
+          </pre>
+
+          <p class="font-bold mt-3">This uses Tailwind utilities for:</p>
+
+          <ul>
+            <li>Color — <code>text-blue-600</code></li>
+            <li>Font weight — <code>font-semibold</code></li>
+          </ul>
+
+          <p>
+            This gives users clear visual feedback on their position within the
+            navigation.
+          </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="prose prose-neutral max-w-none mb-12">
+          <h1>4. Navbar Auto-Hide on Scroll</h1>
+
+          <p>
+            The navbar automatically hides when the user scrolls down and reappears when
+            scrolling up. JavaScript checks <code>window.pageYOffset</code> to detect
+            scroll direction and applies <code>transform: translateY(-100%)</code> to
+            hide the navbar or <code>translateY(0)</code> to show it again.
+          </p>
+
+          <p class="font-bold mt-3">Relevant script/code include:</p>
+          <pre>
+            <code>
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", () => {
+    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollPos > lastScrollTop && scrollPos > 50) {
+      // scrolling down
+      navbar.style.transform = "translateY(-100%)";
+    } else {
+      // scrolling up
+      navbar.style.transform = "translateY(0)";
+    }
+
+    lastScrollTop = scrollPos <= 0 ? 0 : scrollPos;
+  }); 
+            </code>
+          </pre>
+
+          <p class="font-bold mt-3">Tailwind classes used on the navbar:</p>
+
+          <ul>
+            <li><code>fixed</code>, <code>top-0</code>, <code>left-0</code></li>
+            <li><code>w-full</code></li>
+            <li><code>shadow</code></li>
+            <li><code>bg-white</code></li>
+            <li><code>transition-all</code>, <code>duration-300</code></li>
+          </ul>
+
+          <p>
+            These utilities control its position, background, shadow, and animations,
+            creating a smooth sliding, user-friendly navbar.
+          </p>
+        </section>  
+      </section>
+    </div>  
 
     <!-- SCRIPT for accordion toggle -->
     <script>
