@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Fonts Overview</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/flexboxes.css">
+  <link rel="stylesheet" href="assets/nav.css">
+  <link rel="stylesheet" href="assets/typography.css">
+  
+  <link href="dist/output.css" rel="stylesheet">
+  
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen p-10">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="bg-white shadow fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+
+            <!-- Logo -->
+            <div class="text-xl font-bold text-wlate-600">
+            <a href="index.html" data-link="home" >
+                BPHTML10TWNDJS
+            </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="nav-toggle" class="md:hidden text-2xl focus:outline-none">
+            ☰
+            </button>
+
+            <!-- Desktop links -->
+            <ul id="nav-links" class="hidden md:flex space-x-4 text-gray-700">
+            <li><a href="npm.html" data-link="home" class="nav-link hover:text-slate-100">NPM</a></li>
+            <li><a href="images.html" data-link="about" class="nav-link hover:text-slate-100">Images</a></li>
+            <li><a href="javascript.html" data-link="services" class="nav-link hover:text-slate-100">Javascript</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Mobile dropdown -->
+        <ul id="nav-mobile"
+            class="hidden md:hidden flex flex-col space-y-2 pb-4 text-gray-700 font-medium overflow-hidden max-h-0 transition-all duration-300">
+            <li><a href="npm.html" data-link="home" class="nav-link hover:text-slate-100">NPM</a></li>
+            <li><a href="images.html" data-link="about" class="nav-link hover:text-slate-100">Images</a></li>
+            <li><a href="javascript.html" data-link="services" class="nav-link hover:text-slate-100">Javascript</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Section 1 -->
+    <section class="prose prose-neutral max-w-none">
+      <h1>JavaScript & Tailwind</h1>
+
+      <h2>1. Accordion Toggle</h2>
+
+      <p>
+        The accordion JavaScript selects all elements with the
+        <code>.accordion-btn</code> class and attaches a click event listener. When
+        a button is clicked, the script toggles the <code>hidden</code> class on the
+        corresponding <code>.accordion-content</code> element, revealing or hiding
+        it. It also updates the icon inside the button—switching <strong>+</strong>
+        when hidden and <strong>-</strong> when visible.
+      </p>
+
+      <p>Relevant Tailwind classes include:</p>
+
+      <ul>
+        <li><code>hidden</code> — hides accordion content by default</li>
+        <li><code>bg-white</code>, <code>bg-gray-50</code></li>
+        <li><code>border</code>, <code>rounded</code></li>
+        <li><code>p-4</code></li>
+        <li><code>font-semibold</code>, <code>text-gray-700</code></li>
+      </ul>
+
+      <p>
+        These classes style the accordion container, layout, spacing, and
+        typography, while JavaScript controls the interactive opening and closing
+        behavior.
+      </p>
+
+      <h2>2. Mobile Navigation Menu</h2>
+
+      <p>
+        The mobile menu toggle uses JavaScript to control both
+        <code>#nav-toggle</code> (the button) and <code>#nav-mobile</code> (the
+        menu). When the button is clicked, JavaScript toggles the
+        <code>hidden</code> class and adjusts <code>maxHeight</code> to create a
+        smooth sliding animation.
+      </p>
+
+      <p>Important Tailwind classes used:</p>
+
+      <ul>
+        <li><code>hidden</code> — hides menu by default</li>
+        <li><code>md:hidden</code> — shows mobile menu only on small screens</li>
+        <li><code>flex</code>, <code>flex-col</code>, <code>space-y-2</code></li>
+        <li><code>pb-4</code></li>
+        <li><code>text-gray-700</code></li>
+      </ul>
+
+      <p>
+        This setup ensures a responsive, mobile-friendly menu that appears only
+        where needed and does not interfere with the desktop layout.
+      </p>
+
+      <h2>3. Active Link Highlighting</h2>
+
+      <p>
+        JavaScript dynamically adds or removes Tailwind classes to show which
+        navigation link is currently active. Each
+        <code>.nav-link</code> element includes a <code>data-link</code> attribute.
+        When one is clicked, the script adds <code>text-blue-600</code> and
+        <code>font-semibold</code> to highlight the active link and removes these
+        classes from the others.
+      </p>
+
+      <p>This uses Tailwind utilities for:</p>
+
+      <ul>
+        <li>Color — <code>text-blue-600</code></li>
+        <li>Font weight — <code>font-semibold</code></li>
+      </ul>
+
+      <p>
+        This gives users clear visual feedback on their position within the
+        navigation.
+      </p>
+
+      <h2>4. Navbar Auto-Hide on Scroll</h2>
+
+      <p>
+        The navbar automatically hides when the user scrolls down and reappears when
+        scrolling up. JavaScript checks <code>window.pageYOffset</code> to detect
+        scroll direction and applies <code>transform: translateY(-100%)</code> to
+        hide the navbar or <code>translateY(0)</code> to show it again.
+      </p>
+
+      <p>Tailwind classes used on the navbar:</p>
+
+      <ul>
+        <li><code>fixed</code>, <code>top-0</code>, <code>left-0</code></li>
+        <li><code>w-full</code></li>
+        <li><code>shadow</code></li>
+        <li><code>bg-white</code></li>
+        <li><code>transition-all</code>, <code>duration-300</code></li>
+      </ul>
+
+      <p>
+        These utilities control its position, background, shadow, and animations,
+        creating a smooth sliding, user-friendly navbar.
+      </p>
+    </section>
+
+
+    <!-- SCRIPT for accordion toggle -->
+    <script>
+        document.querySelectorAll('.accordion-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+
+            content.classList.toggle('hidden');
+
+            // Update + / -
+            const icon = button.querySelector('span');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+          });
+        });
+
+      const navToggle = document.getElementById("nav-toggle");
+      const navMobile = document.getElementById("nav-mobile");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const navbar = document.getElementById("navbar");
+
+      /* -------------------------
+        1) SLIDE-DOWN MOBILE MENU
+        ------------------------- */
+      navToggle.addEventListener("click", () => {
+        if (navMobile.classList.contains("hidden")) {
+          navMobile.classList.remove("hidden");
+          navMobile.style.maxHeight = navMobile.scrollHeight + "px";
+        } else {
+          navMobile.style.maxHeight = "0px";
+          setTimeout(() => navMobile.classList.add("hidden"), 300);
+        }
+      });
+
+      /* -------------------------
+        2) ACTIVE LINK HIGHLIGHTING
+        ------------------------- */
+      function setActiveLink(name) {
+        navLinks.forEach(link => {
+          if (link.dataset.link === name) {
+            link.classList.add("text-blue-600", "font-semibold");
+          } else {
+            link.classList.remove("text-blue-600", "font-semibold");
+          }
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          const page = link.dataset.link;
+          setActiveLink(page);
+        });
+      });
+
+      /* -------------------------
+        3) AUTO-HIDE ON SCROLL
+        ------------------------- */
+      let lastScrollTop = 0;
+
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollPos > lastScrollTop && scrollPos > 50) {
+          // scrolling down
+          navbar.style.transform = "translateY(-100%)";
+        } else {
+          // scrolling up
+          navbar.style.transform = "translateY(0)";
+        }
+
+        lastScrollTop = scrollPos <= 0 ? 0 : scrollPos;
+      });
+    </script>
+  
+</body>
+</html>
