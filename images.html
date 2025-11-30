@@ -50,141 +50,151 @@
     </nav>
     
     <!-- Section 1 -->
-   <section class="prose prose-neutral max-w-none">
-    <h1>How to Use Images in This Setup (Local + Netlify)</h1>
+    <section class="prose prose-neutral max-w-none mt-12 mb-6">
+      <h1>How to Use Images in This Setup (Local + Netlify)</h1>
 
-    <p>
-      Using images in a Tailwind + HTML project works much like any static site,
-      but the build process affects how images must be organized — especially when
-      deploying to Netlify.
-    </p>
+      <p class="mt-6 font-bold">
+        Using images in a Tailwind + HTML project works much like any static site,
+        but the build process affects how images must be organized — especially when
+        deploying to Netlify.
+      </p>
 
-    <h2>1. Place Images Inside Your Project Folder</h2>
+      <h1 class="mt-6">1. Place Images Inside Your Project Folder</h1>
 
-    <p>
-      Images must live in a folder that will be included in the final build. Two
-      common approaches are:
-    </p>
+      <p>
+        Images must live in a folder that will be included in the final build. Two
+        common approaches are:
+      </p>
 
-    <h3>Option A — <code>public/</code> folder</h3>
+      <div class="mt-4 mb-4 ml-4">
 
-    <pre><code>project/
-    public/
-      images/
-        logo.png
-    src/
-    index.html</code></pre>
+        <div class="mb-6">
+          <h3>Option A — <code>public/</code> folder <span class=" text-red-500 animate-pulse">Prefered method</span></h3>
 
-    <p>
-      Anything placed inside <code>public/</code> is copied directly into the
-      output build folder. This makes <code>public/</code> the safest place for
-      images when using Tailwind, Vite, Webpack, or other bundlers.
-    </p>
+          <pre><code>project/
+          public/
+            images/
+              logo.png
+          src/
+          index.html</code></pre>
 
-    <h3>Option B — <code>images/</code> next to HTML files</h3>
+          <p>
+            Anything placed inside <code>public/</code> is copied directly into the
+            output build folder. This makes <code>public/</code> the safest place for
+            images when using Tailwind, Vite, Webpack, or other bundlers.
+          </p>
+        </div>
 
-    <pre><code>project/
-    images/
-      hero.jpg
-    index.html</code></pre>
+        <div class="mb-6">
+          <h3>Option B — <code>images/</code> next to HTML files</h3>
 
-    <p>
-      This works fine if you are not using a bundler. But in projects using Vite
-      or Webpack, images outside <code>public/</code> may require special
-      configuration. For this reason, <code>public/</code> is generally preferred.
-    </p>
+          <pre><code>project/
+          images/
+            hero.jpg
+          index.html</code></pre>
 
-    <h2>2. Reference Images in HTML</h2>
+          <p>
+            This works fine if you are not using a bundler. But in projects using Vite
+            or Webpack, images outside <code>public/</code> may require special
+            configuration. For this reason, <code>public/</code> is generally preferred.
+          </p>
+        </div>
 
-    <p>
-      Use standard relative paths if your images sit next to the HTML files:
-    </p>
+      </div>
 
-    <pre><code>&lt;img src="images/photo.jpg" alt="Photo"&gt;</code></pre>
 
-    <p>
-      For images in <code>public/images/</code>, use a leading slash so Netlify
-      serves them from the site root:
-    </p>
+      <h1>2. Reference Images in HTML</h1>
+      <p>
+        For images in <code>public/images/</code>, use a leading slash so Netlify
+        serves them from the site root:
+      </p>
 
-    <pre><code>&lt;img src="/images/photo.jpg" alt="Photo"&gt;</code></pre>
+      <pre><code>&lt;img src="/images/photo.jpg" alt="Photo"&gt;</code></pre>
+      
+      <p>
+        Use standard relative paths if your images sit next to the HTML files:
+      </p>
 
-    <h2>3. Reference Images in CSS (Tailwind or Custom CSS)</h2>
+      <pre><code>&lt;img src="images/photo.jpg" alt="Photo"&gt;</code></pre>
 
-    <p>Traditional CSS background image:</p>
+      </section>
+      <section class="prose prose-neutral max-w-none mt-12 mb-6">
+        <h1>3. Reference Images in CSS (Tailwind or Custom CSS)</h1>
 
-    <pre><code>.hero {
-    background-image: url('/images/hero.jpg');
-  }</code></pre>
+        <p>Traditional CSS background image:</p>
 
-    <p>Tailwind utility background image:</p>
+        <pre><code>.hero {
+        background-image: url('/images/hero.jpg');
+      }</code></pre>
 
-    <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
+        <p>Tailwind utility background image:</p>
 
-    <p>
-      <strong>Note:</strong> Tailwind may purge unused classes. If a background
-      class is dynamically generated, safelist it in
-      <code>tailwind.config.js</code>.
-    </p>
+        <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
 
-    <p>
-      Following these approaches ensures images work both locally and on Netlify.
-      Using the <code>public/</code> folder is the most reliable option, and
-      referencing images from the root (<code>/</code>) prevents broken paths in
-      production.
-    </p>
-  </section>
+        <p>
+          <strong>Note:</strong> Tailwind may purge unused classes. If a background
+          class is dynamically generated, safelist it in
+          <code>tailwind.config.js</code>.
+        </p>
 
-  <section class="prose prose-neutral max-w-none mt-12">
-    <h1>Organizing Images for Tailwind + Netlify</h1>
+        <p>
+          Following these approaches ensures images work both locally and on Netlify.
+          Using the <code>public/</code> folder is the most reliable option, and
+          referencing images from the root (<code>/</code>) prevents broken paths in
+          production.
+        </p>
+    </section>
 
-    <p>
-      Tailwind projects typically use a build process (Vite, Webpack, PostCSS).
-      During build:
-    </p>
+    <!-- Section 2 -->
+    <section class="prose prose-neutral max-w-none mt-12 mb-6">
+      <h1>Organizing Images for Tailwind + Netlify</h1>
 
-    <ul>
-      <li>Your CSS is compiled</li>
-      <li>Unused classes are purged</li>
-      <li>Only specific folders are copied to the output</li>
-    </ul>
+      <p>
+        Tailwind projects typically use a build process (Vite, Webpack, PostCSS).
+        During build:
+      </p>
 
-    <p>
-      If images are placed incorrectly, they may not be included in the build,
-      causing broken links on Netlify.
-    </p>
+      <ul>
+        <li>Your CSS is compiled</li>
+        <li>Unused classes are purged</li>
+        <li>Only specific folders are copied to the output</li>
+      </ul>
 
-    <h2>1. Use a <code>public/</code> Folder for Static Assets</h2>
+      <p>
+        If images are placed incorrectly, they may not be included in the build,
+        causing broken links on Netlify.
+      </p>
 
-    <p>
-      The safest solution is to put all images inside a <code>public/</code>
-      folder:
-    </p>
+      <h2>1. Use a <code>public/</code> Folder for Static Assets</h2>
 
-    <pre><code>project/
-    public/
-      images/
-        logo.png
-        hero.jpg
-    src/
-      index.css
-      main.js
-    index.html</code></pre>
+      <p>
+        The safest solution is to put all images inside a <code>public/</code>
+        folder:
+      </p>
 
-    <ul>
-      <li>Everything inside <code>public/</code> is copied directly to the final build.</li>
-      <li>No imports are required — just reference assets with absolute paths:</li>
-    </ul>
+      <pre><code>project/
+      public/
+        images/
+          logo.png
+          hero.jpg
+      src/
+        index.css
+        main.js
+      index.html</code></pre>
 
-    <pre><code>&lt;img src="/images/logo.png" alt="Logo"&gt;</code></pre>
-    <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
+      <ul>
+        <li>Everything inside <code>public/</code> is copied directly to the final build.</li>
+        <li>No imports are required — just reference assets with absolute paths:</li>
+      </ul>
 
-    <p>
-      This avoids Tailwind purging issues and ensures Netlify always serves your
-      images correctly.
-    </p>
-  </section>
+      <pre><code>&lt;img src="/images/logo.png" alt="Logo"&gt;</code></pre>
+      <pre><code>&lt;div class="bg-[url('/images/hero.jpg')] h-64"&gt;&lt;/div&gt;</code></pre>
 
+      <p>
+        This avoids Tailwind purging issues and ensures Netlify always serves your
+        images correctly.
+      </p>
+    </section>
 
     <!-- SCRIPT for accordion toggle -->
     <script>
