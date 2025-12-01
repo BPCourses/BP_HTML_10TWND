@@ -147,6 +147,37 @@
                 exactly like your local machine when it builds your project.
             </p>
 
+            <p class="text-red-500 font-bold mt-6">
+                And second: change the following code in your package.json file:
+            </p>
+
+            <pre>
+                <code>
+"build": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+                </code>
+            </pre>
+
+            <p>
+                And change it into:
+            </p>
+            <pre>
+                <code>
+"build": "tailwindcss -i ./src/input.css -o ./dist/output.css"
+                </code>
+            </pre>
+
+            <p>
+                --watch — Rebuild automatically
+Tailwind watches your project for changes.
+Every time you edit an HTML or CSS file, Tailwind automatically regenerates output.css.
+            </p>
+
+            <p>
+                The line "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch" tells Tailwind to take your source CSS file (src/input.css), process it, and generate the final compiled stylesheet in dist/output.css. The problem on Netlify is the --watch flag: it keeps the build process running forever, waiting for file changes. Netlify expects the build to finish and exit, but --watch never stops, so the deployment hangs or fails. For Netlify, the build script must run once and exit—so you should remove --watch
+            </p>
+
+
+
             <h1 class="mt-6">
                 When Netlify deploys:
             </h1>
